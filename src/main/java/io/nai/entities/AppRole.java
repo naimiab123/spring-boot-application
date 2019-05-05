@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import io.nai.util.RoleEnum;
+
 @Entity
 public class AppRole {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -28,9 +30,9 @@ public AppRole() {
 	super();
 	// TODO Auto-generated constructor stub
 }
-public AppRole(String roleName) {
+public AppRole(RoleEnum role) {
 	super();
-	this.roleName = roleName;
+	this.roleName = role.getName();
 }
 public AppRole(Long id, String roleName) {
 	super();

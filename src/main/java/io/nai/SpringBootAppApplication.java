@@ -16,6 +16,7 @@ import io.nai.dao.ProductRepository;
 import io.nai.entities.AppRole;
 import io.nai.entities.AppUser;
 import io.nai.entities.Product;
+import io.nai.util.RoleEnum;
 
 @SpringBootApplication
 public class SpringBootAppApplication implements CommandLineRunner {
@@ -38,13 +39,15 @@ public class SpringBootAppApplication implements CommandLineRunner {
 		Product p3 =new Product("MONITOR-SAMSUNG", 45, 1085.99);
 		Product p4 =new Product("MONITOR-NOKIA", 11, 7085.99);
 		Product p5 =new Product("CLOCK-DSV", 10, 185.99);
-		Stream.of(p1, p2, p3, p4,p5).forEach(p -> {
+		Product p6 =new Product("PC-MOC",5, 985.99);
+		Product p7 =new Product("TBLET-SONIC",3, 335.99);
+		Stream.of(p1, p2, p3, p4, p5, p6, p7).forEach(p -> {
 			
 			productRepository.save(p);
 		});
 		
-		AppRole roleUser = new AppRole("ROLE_USER");
-		AppRole roleAdmin = new AppRole("ROLE_ADMIN");
+		AppRole roleUser = new AppRole(RoleEnum.ROLE_USER);
+		AppRole roleAdmin = new AppRole(RoleEnum.ROLE_ADMIN);
 		Stream.of(roleUser,roleAdmin).forEach(t ->{
 			roleRepository.save(t);
 		});
