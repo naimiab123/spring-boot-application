@@ -15,6 +15,7 @@ public class ProductServiceImpl implements ProductService {
 	  products.add(new Product("SMART-PHONE", 15, 2035.99));
 	  products.add(new Product("MONITOR-SAMSUNG", 45, 1085.99));
 	  products.add(new Product("MONITOR-NOKIA", 11, 7085.99));
+	  products.add(new Product("KAMKAMA", 6, 2285.99));
   }
 	@Override
 	public List<Product> getProducts() {
@@ -36,9 +37,9 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public void deleteProduct(String ref) {
+	public void deleteProduct(Long id) {
 		Product prd =new Product();
-		prd.setRef(ref);
+		prd.setId(id);
 		products.remove(prd);
 	}
 

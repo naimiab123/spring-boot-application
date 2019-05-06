@@ -3,10 +3,11 @@ package io.nai.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import io.nai.dao.AppUserRepository;
 import io.nai.entities.AppUser;
-
+@Service
 public class UserServiceImpl implements UserService<AppUser,Long >{
 	@Autowired
 	private AppUserRepository userRepository;

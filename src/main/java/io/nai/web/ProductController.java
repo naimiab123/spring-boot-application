@@ -2,6 +2,8 @@ package io.nai.web;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,30 +14,30 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.http.MediaType;
 import io.nai.entities.Product;
-import io.nai.service.ProductService;
+import io.nai.service.ProduitService;
 
 @RestController
-@RequestMapping("api/product")
-@CrossOrigin("*")
+@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
+@RequestMapping(value="api/product")  
 public class ProductController {
 	@Autowired
-	private ProductService productService;
+	private ProduitService productService;
 	@GetMapping
      public List<Product> getProduct(){
 	    return productService.getProducts();
   }
-	@PostMapping
-	public void addToListProduct(@RequestBody Product product) {
+	@PostMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})	
+	public void addToListProduct(@Valid @RequestBody Product product) {
 		productService.addProduct(product);
 	}
 	@PutMapping
-	public void updateTheProduct(@RequestBody Product product) {
+	public void updateTheProduct(@Valid @RequestBody Product product) {
 		productService.updateProduct(product);
 	}
-	@DeleteMapping("/{ref}")
-	public void deleteProduct(@PathVariable String ref) {
-		productService.deleteProduct(ref);
+	@DeleteMapping("/{id}")
+	public void deleteProduct(@PathVariable Long id) {
+		productService.deleteProduct(id);
 	}
 }

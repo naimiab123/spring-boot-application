@@ -29,19 +29,10 @@ public class CORSFilter implements Filter{
 		resp.setHeader("Access-Control-Allow-Headers",
 				"x-requested-with, authorization, Content-Type, Authorization, credential, X-XSRF-TOKEN");
 	
-		/*
-		 * if ("OPTIONS".equalsIgnoreCase(req.getMethod())) {
-		 * resp.setStatus(HttpServletResponse.SC_OK); }
-		 */
-		
-		if(req.getMethod().equals("OPTIONS")) {
-			resp.setStatus(HttpServletResponse.SC_OK );
-		}
-		
-		else {
+		if ("OPTIONS".equalsIgnoreCase(req.getMethod())) {
+			resp.setStatus(HttpServletResponse.SC_OK);
+		} else {
 			chain.doFilter(req, resp);
 		}
-		
-	}
-
+}
 }

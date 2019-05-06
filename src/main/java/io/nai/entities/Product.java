@@ -1,14 +1,27 @@
 package io.nai.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Product {
-	@Id
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long id;
   private String ref;
   private int quantity;
   private double unitPrice;
+  
+public Long getId() {
+	return id;
+}
+public void setId(Long id) {
+	this.id = id;
+}
+public void setUnitPrice(double unitPrice) {
+	this.unitPrice = unitPrice;
+}
 public String getRef() {
 	return ref;
 }
@@ -24,9 +37,7 @@ public void setQuantity(int quantity) {
 public double getUnitPrice() {
 	return unitPrice;
 }
-public void setUnitPrice(float unitPrice) {
-	this.unitPrice = unitPrice;
-}
+
 public Product(String ref, int quantity, double d) {
 	super();
 	this.ref = ref;
