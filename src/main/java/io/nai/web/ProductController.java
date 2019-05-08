@@ -15,13 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.nai.entities.Product;
 import io.nai.service.ProductService;
+import io.nai.service.ProduitsService;
 
 @RestController
 @RequestMapping("api/product")
 @CrossOrigin("*")
 public class ProductController {
 	@Autowired
-	private ProductService productService;
+	private ProduitsService productService;
 	@GetMapping
      public List<Product> getProduct(){
 	    return productService.getProducts();
@@ -34,8 +35,8 @@ public class ProductController {
 	public void updateTheProduct(@RequestBody Product product) {
 		productService.updateProduct(product);
 	}
-	@DeleteMapping("/{ref}")
-	public void deleteProduct(@PathVariable String ref) {
-		productService.deleteProduct(ref);
+	@DeleteMapping("/{id}")
+	public void deleteProduct(@PathVariable Long id) {
+		productService.deleteProduct(id);
 	}
 }

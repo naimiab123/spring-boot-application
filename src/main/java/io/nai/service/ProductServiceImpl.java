@@ -35,10 +35,12 @@ public class ProductServiceImpl implements ProductService {
 
 	}
 
+	
+		
 	@Override
-	public void deleteProduct(String ref) {
+	public void deleteProduct(Long id) {
 		Product prd =new Product();
-		prd.setRef(ref);
+		prd.setId(id);;
 		products.remove(prd);
 	}
 
